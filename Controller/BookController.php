@@ -7,9 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class BookController {
+class BookController extends Controller {
     public function indexAction(Request $request) {
-        return 1;
+        $bookModel = new BookModel();
+        $books=$bookModel->getList();
+
+       $args=array('books'=>$books);
+        return $this->render('index', $args);
     }
 
 }

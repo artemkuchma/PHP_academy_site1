@@ -49,6 +49,7 @@ function __autoload($className)
     }
     return 'File {$file} not found';
 }
+try{
 
 $request=new Request();
 $rout=$request->get('rout');
@@ -65,5 +66,8 @@ $_action=strtolower($rout[1]).'Action';
 //echo $_action;
 $_controller = new $_controller;
 $content = $_controller->$_action($request);
+}catch (Exception $e){
+    $content=$e->getMessage();
+}
 
 require VIEW_DIR . 'layout.phtml';
