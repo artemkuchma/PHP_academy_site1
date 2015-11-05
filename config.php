@@ -1,8 +1,9 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Art
- * Date: 04.11.15
- * Time: 8:16
- * To change this template use File | Settings | File Templates.
- */
+
+define('DS',DIRECTORY_SEPARATOR);
+
+define('ROOT', __DIR__.DS);
+define('VIEW_DIR', ROOT.'View'.DS);
+define('MODEL_DIR', ROOT.'Model'.DS);
+define('CONTROLLER_DIR', ROOT.'Controller'.DS);
+define('LIB_DIR', ROOT.'Library'.DS);

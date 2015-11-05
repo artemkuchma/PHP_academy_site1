@@ -8,5 +8,8 @@
  */
 
 class BookController {
+    public function indexAction(Request $request) {
+        return 1;
+    }
 
 }
