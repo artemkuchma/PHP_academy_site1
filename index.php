@@ -65,9 +65,14 @@ $_controller=ucfirst(strtolower($rout[0])).'Controller';
 $_action=strtolower($rout[1]).'Action';
 //echo $_action;
 $_controller = new $_controller;
+    if(!method_exists($_controller, $_action)){
+        throw new Exception("{$_action} not found");
+    }
 $content = $_controller->$_action($request);
 }catch (Exception $e){
-    $content=$e->getMessage();
+   // $content=$e->getMessage();
+    $indexController=new IndexController();
+    $content=$indexController->errorAction($e);
 }
 
 require VIEW_DIR . 'layout.phtml';

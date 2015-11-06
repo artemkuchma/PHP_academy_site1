@@ -15,24 +15,30 @@ class IndexController extends Controller
 
     public function aboutAction(Request $request)
     {
-        $text_about = 'test, test, test';
-        $templateDir = str_replace('Controller', '', __CLASS__);
-        $templateFile = VIEW_DIR . $templateDir . DS . 'about.phtml';
-        if (!file_exists($templateFile)) {
-            die("{$templateFile} not found");
-        }
-        ob_start();
-        require $templateFile;
-        return ob_get_clean();
+        $args = array(
+            't_1' => 'test-1',
+            't_2' => 'test-2',
+            't_3' => 'test-3'
+        );
+        return $this->render('about', $args);
+
+
     }
 
     public function contactAction(Request $request)
     {
         $args = array(
             'test_contact' => 'contact-test',
-            'test_2'=> 'test-2'
+            'test_2' => 'test-2'
         );
         return $this->render('contact', $args);
+    }
+
+    public function errorAction(Exception $e)
+    {
+        $message = $e->getMessage();
+        $args['message'] = $message;
+        return $this->render('error', $args);
     }
 
 }

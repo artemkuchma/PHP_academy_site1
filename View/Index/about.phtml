@@ -1,6 +1,10 @@
 <div>
     <h1>Page About</h1>
-    <p>
-        <?=$text_about ?>
-    </p>
+
+    <ul>
+        <?php foreach ($args as $val): ?>
+            <li><?=$val ?></li>
+        <?php endforeach ?>
+    </ul>
+
 </div>
