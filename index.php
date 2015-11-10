@@ -37,7 +37,7 @@ echo'<pre>';
 print_r(files_tree(ROOT, 'layout.phtml')) ;
 echo'</pre>';
  **/
-
+/*
 function __autoload($className)
 {
     $file = $className . '.php';
@@ -46,33 +46,56 @@ function __autoload($className)
         if (file_exists($val . $file)) {
             require $val . $file;
         }
+        else{
+            throw new Exception('File {$file} not found');
+            //die('Ups');
+        }
     }
-    return 'File {$file} not found';
-}
-try{
+}*/
 
-$request=new Request();
-$rout=$request->get('rout');
+function __autoload($className)
+{
+    $file = $className . '.php';
+    if (file_exists(LIB_DIR . $file)) {
+        require LIB_DIR . $file;
+    } elseif (file_exists(CONTROLLER_DIR . $file)) {
+        require CONTROLLER_DIR . $file;
+    } elseif (file_exists(VIEW_DIR . $file)) {
+        require VIEW_DIR . $file;
+    }elseif (file_exists(MODEL_DIR . $file)) {
+        require MODEL_DIR . $file;
+    }
+    else {
+        throw new Exception("File {$file} not found", 404);
+    }
 
-if(!isset($rout)){
-    $rout = 'index/index';
 }
+
+try {
+    $request = new Request();
+    $rout = $request->get('rout');
+    $id= $request->get('id');
+
+    if (!isset($rout)) {
+        $rout = 'index/page';
+    }
 //echo $rout;
-$rout=explode('/',$rout);
+    $rout = explode('/', $rout);
 //print_r($rout);
-$_controller=ucfirst(strtolower($rout[0])).'Controller';
+    $_controller = ucfirst(strtolower($rout[0])) . 'Controller';
 //echo $_controller;
-$_action=strtolower($rout[1]).'Action';
+    $_action = strtolower($rout[1]) . 'Action';
 //echo $_action;
-$_controller = new $_controller;
-    if(!method_exists($_controller, $_action)){
-        throw new Exception("{$_action} not found");
+    $_controller = new $_controller;
+    if (!method_exists($_controller, $_action)) {
+        throw new Exception("{$_action} not found", 404);
     }
-$content = $_controller->$_action($request);
-}catch (Exception $e){
-   // $content=$e->getMessage();
-    $indexController=new IndexController();
-    $content=$indexController->errorAction($e);
-}
+    $content = $_controller->$_action($request).'<br/> <b> page id = '.$id.'</b>';
 
+
+} catch (Exception $e) {
+     //$content=$e->getMessage();
+    $indexController = new IndexController();
+    $content = $indexController->errorAction($e);
+}
 require VIEW_DIR . 'layout.phtml';

@@ -1,4 +1,9 @@
 <h1>Contact</h1>
-<?=$test_contact ?>
-<br/>
-<?=$test_2 ?>
+
+
+<form method="post">
+    Name: <input type="text" name="name" value="<?=$form->name?>"> <br>
+    Email: <input type="email" name="email" value="<?=$form->email?>"> <br>
+    Message: <textarea name="message" id="" cols="30" rows="10"><?=$form->message?></textarea>
+    <button type="submit">Go</button>
+</form>

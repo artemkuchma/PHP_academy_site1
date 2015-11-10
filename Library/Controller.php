@@ -7,7 +7,7 @@ abstract class Controller {
         $tplDir=str_replace('Controller', '', get_class($this));
         $file=VIEW_DIR.$tplDir.DS.$tplName.'.phtml';
         if(!file_exists($file)){
-            throw new Exception("{$file} not found");
+            throw new Exception("{$file} not found", 404);
         }
         ob_start();
         require $file;

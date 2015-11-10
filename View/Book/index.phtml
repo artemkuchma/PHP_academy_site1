@@ -1,4 +1,16 @@
 <h1> Books</h1>
+
+<ol>
 <?php foreach($books as $book):?>
-    <b><?=$book ?></b><br/>
+    <li><ul>
+        <?php foreach($book as $key => $val):?>
+                <?php if($key=='id'){continue;} ?>
+            <li> <?=$key?> : <?=$val ?>;</li>
+        <?php endforeach ?>
+            <?php
+            echo '<a href="index.php?rout=book/show&id='.$book['id'].'">Read more</a>';
+            ?>
+    </ul></li>
+        <hr/>
 <?php endforeach ?>
+</ol>
