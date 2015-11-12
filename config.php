@@ -12,3 +12,4 @@ define('LIB_DIR', ROOT.'Library'.DS);
 // Продолжение теста
 // Test commit-3
 //Test test test    hhhhh
+//h
