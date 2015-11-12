@@ -8,10 +8,4 @@ define('MODEL_DIR', ROOT.'Model'.DS);
 define('CONTROLLER_DIR', ROOT.'Controller'.DS);
 define('LIB_DIR', ROOT.'Library'.DS);
 
-
-//Тестовый коммент
-// Продолжение теста
-// Test commit-3
-//Test test test    hhhhh
-//h
-
+?>
