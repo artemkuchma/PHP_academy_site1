@@ -9,3 +9,5 @@ define('CONTROLLER_DIR', ROOT.'Controller'.DS);
 define('LIB_DIR', ROOT.'Library'.DS);
 
 //Тестовый коммент
+// Продолжение теста
+// Test commit-3
