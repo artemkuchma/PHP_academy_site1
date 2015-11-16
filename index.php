@@ -79,6 +79,7 @@ try {
     if (!isset($rout)) {
         $rout = 'index/page';
     }
+
 //echo $rout;
     $rout = explode('/', $rout);
 //print_r($rout);

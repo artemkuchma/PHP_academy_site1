@@ -4,7 +4,7 @@
 <?php foreach($books as $book):?>
     <li><ul>
         <?php foreach($book as $key => $val):?>
-                <?php if($key=='id'){continue;} ?>
+                <?php  if($key=='id'){continue;} ?>
             <li> <?=$key?> : <?=$val ?>;</li>
         <?php endforeach ?>
             <?php
