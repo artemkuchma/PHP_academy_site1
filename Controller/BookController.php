@@ -4,8 +4,12 @@
 class BookController extends Controller {
 
     public function indexAction(Request $request) {
+        $paginationModel = new PaginationModel();
+        $count = $paginationModel->getItemsPerPage();
+        $from = $request->get('page') ? $count*$request->get('page')-5 : 0;
+
         $bookModel = new BookModel();
-        $books=$bookModel->getList();
+        $books=$bookModel->getList($from, $count);
 
        $args=array('books'=>$books);
         return $this->render('index', $args);

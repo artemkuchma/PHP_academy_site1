@@ -6,11 +6,12 @@ class BookModel {
 
 
 
-    public  function getList()
+    public  function getList($from, $count)
     {
         $dbc = Connect::getConnection();
-        $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id';
+        $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id ORDER BY b.id LIMIT '.$from.' ,'.$count;
         $placeholders = array();
+
         $date = $dbc->getDate($sql, $placeholders);
         return $date;
     }

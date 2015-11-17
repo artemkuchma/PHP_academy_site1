@@ -24,7 +24,12 @@ class Connect {
     }
     public function getDate($sql, array $placeholders)
     {
+        //$this->PDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $sth = $this->PDO->prepare($sql);
+
+        //$sth->bindParam(':from', $from, PDO::PARAM_INT);
+       // $sth->bindParam(':count', $count, PDO::PARAM_INT);
+
         $sth->execute($placeholders);
         $date = $sth->fetchAll(PDO::FETCH_ASSOC);
         return $date;

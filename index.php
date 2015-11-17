@@ -76,6 +76,7 @@ try {
     $rout = $request->get('rout');
     $id= $request->get('id');
 
+
     if (!isset($rout)) {
         $rout = 'index/page';
     }
@@ -91,7 +92,9 @@ try {
     if (!method_exists($_controller, $_action)) {
         throw new Exception("{$_action} not found", 404);
     }
+
     $content = $_controller->$_action($request).'<br/> <b> page id = '.$id.'</b>';
+    //Debugger::PrintR(PaginationController::showPagination());
 
 
 } catch (Exception $e) {
