@@ -6,7 +6,7 @@ class BookController extends Controller {
     public function indexAction(Request $request) {
         $paginationModel = new PaginationModel();
         $count = $paginationModel->getItemsPerPage();
-        $from = $request->get('page') ? $count*$request->get('page')-5 : 0;
+        $from = $request->get('page') ? $count*$request->get('page')- $count : 0;
 
         $bookModel = new BookModel();
         $books=$bookModel->getList($from, $count);

@@ -5,7 +5,8 @@ class PaginationController extends Controller {
     public $buttons = array();
     public function __construct()
     {
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;// get('page') ? (int)get('page'): 1 ;
+        $request = new Request();
+        $currentPage = $request->get('page') ? (int)$request->get('page') : 1;// get('page') ? (int)get('page'): 1 ;
         $paginationModel = new PaginationModel();
         $itemsCount = $paginationModel->getItemsCount()[0]['itemsCount'];
         $itemsPerPage = $paginationModel->getItemsPerPage();

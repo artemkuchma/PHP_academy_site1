@@ -7,12 +7,12 @@ class Connect {
     private static $connection;
     private $PDO;
     private   function __construct($dsn, $user, $pass){
-        try{
+        //try{
         $this->PDO = new PDO($dsn, $user, $pass);
         $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            }catch (PDOException $e){
-            throw new Exception($e->getMessage(),1044);
-        }
+          //  }catch (PDOException $e){
+           // throw new Exception($e->getMessage(),1044);
+        //}
     }
 
     public static function getConnection()
@@ -56,4 +56,6 @@ class Connect {
     }
 
 **/
+
+    
 }
