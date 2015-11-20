@@ -1,5 +1,5 @@
 <?php
-
+// ветка pagination - моя версия пагинации в книгах с использованием контроллера
 define('DS',DIRECTORY_SEPARATOR);
 
 define('ROOT', __DIR__.DS);
@@ -17,4 +17,5 @@ define('DSN', "mysql:host=$host;dbname=$dbname; charset=UTF8");
 define('USER', $user);
 define('PASS', $pass);
 // db - user: db_site1 ; password: DW7JZXAvL4WtyU6e
+
 ?>
