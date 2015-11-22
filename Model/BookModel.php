@@ -9,7 +9,7 @@ class BookModel {
     public  function getList($from, $count)
     {
         $dbc = Connect::getConnection();
-        $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id ORDER BY b.id LIMIT '.$from.' ,'.$count;
+        $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id WHERE b.status = 1 ORDER BY b.id LIMIT '.$from.' ,'.$count;
         $placeholders = array(); //compact('from', 'count');- гарантирует чтоб ключ совпадал с переменной
 
         $date = $dbc->getDate($sql, $placeholders);
@@ -41,6 +41,17 @@ class BookModel {
         return $date;
 
     }
+    public function getBooksCount()
+    {
+        $dbc = Connect::getConnection();
+        $sql ='SELECT count(*) AS itemsCount FROM books';
+        $placeholders = array();
+        $count_array = $dbc->getDate($sql, $placeholders);
+        $count = $count_array[0]['itemsCount'];
+
+        return $count;
+    }
+    
 
 
 

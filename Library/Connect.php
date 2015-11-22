@@ -36,6 +36,12 @@ class Connect {
 
     }
 
+    public function getPDO()
+    {
+        return $this->PDO;
+    }
+
+
 
 /**
     private static $db;

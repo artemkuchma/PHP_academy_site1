@@ -17,4 +17,5 @@ define('DSN', "mysql:host=$host;dbname=$dbname; charset=UTF8");
 define('USER', $user);
 define('PASS', $pass);
 // db - user: db_site1 ; password: DW7JZXAvL4WtyU6e
+define('BOOKS_PER_PAGE', 5);
 ?>

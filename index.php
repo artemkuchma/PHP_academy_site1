@@ -94,6 +94,7 @@ try {
     }
 
     $content = $_controller->$_action($request).'<br/> <b> page id = '.$id.'</b>';
+
     //Debugger::PrintR(PaginationController::showPagination());
     // можно добавить еще сюда следующее
     //} catch (PDOException $e) {
