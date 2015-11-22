@@ -8,20 +8,24 @@ class BookModel {
 
     public  function getList($from, $count)
     {
-        $dbc = Connect::getConnection();
+        RegistryConnect::getConnect();//Connect::getConnection();
+
         $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id WHERE b.status = 1 ORDER BY b.id LIMIT '.$from.' ,'.$count;
         $placeholders = array(); //compact('from', 'count');- гарантирует чтоб ключ совпадал с переменной
 
-        $date = $dbc->getDate($sql, $placeholders);
+        $date = RegistryConnect::getDate($sql, $placeholders);
+
+
         return $date;
     }
 
     public function getBook($id)
     {
-        $dbc = Connect::getConnection();
+        //$dbc = Connect::getConnection();
+        RegistryConnect::getConnect();
         $sql = 'SELECT b.id, b.title, a.name AS author, b.description, b.created FROM books b JOIN authors a ON b.author_id= a.id WHERE b.id = :id';
         $placeholders = array('id'=> $id);
-        $date = $dbc->getDate($sql, $placeholders);
+        $date = RegistryConnect::getDate($sql, $placeholders);// $dbc->getDate($sql, $placeholders);
         if(!$date){
             throw new Exception("id = $id ,is not exist", 404);
         }
@@ -43,10 +47,11 @@ class BookModel {
     }
     public function getBooksCount()
     {
-        $dbc = Connect::getConnection();
+        //$dbc = Connect::getConnection();
+        RegistryConnect::getConnect();
         $sql ='SELECT count(*) AS itemsCount FROM books';
         $placeholders = array();
-        $count_array = $dbc->getDate($sql, $placeholders);
+        $count_array = RegistryConnect::getDate($sql, $placeholders);// $dbc->getDate();
         $count = $count_array[0]['itemsCount'];
 
         return $count;
