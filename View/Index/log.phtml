@@ -1,0 +1,16 @@
+
+<p>
+    <a href="index.php?rout=index/register&id=5">Register</a>
+</p>
+<p>
+    <?php
+    if(Session::has('user')): ?>
+        <a href="index.php?rout=index/logout&id=1">Logout  <?=Session::get('user')['user']; ?>
+        </a>
+    <?php else: ?>
+        <a href="index.php?rout=index/login&id=6">Login</a>
+    <?php endif ?>
+</p>
+<p>
+    <?= isset($_GET['msg'])? $_GET['msg']: ''; ?>
+</p>

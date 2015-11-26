@@ -71,6 +71,8 @@ function __autoload($className)
 
 }
 
+Session::start();
+
 try {
     $request = new Request();
     $rout = $request->get('rout');

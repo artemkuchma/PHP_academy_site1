@@ -1,0 +1,12 @@
+<h1>Register new user</h1>
+
+<b><?=$msg; ?></b>
+
+<br/>
+<form method="post">
+    Email: <input type="email" name="email" value="<?=$registerForm->getEmail(); ?>"/> <br/><br/>
+    Username: <input type="text" name="username" value="<?=$registerForm->getUsername(); ?>"/> <br/><br/>
+    Password: <input type="password" name="password"/> <br/><br/>
+    Confirm password: <input type="password" name="passwordConfirm"/> <br/><br/>
+    <input type="submit"/>
+</form>

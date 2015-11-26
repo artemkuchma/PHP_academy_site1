@@ -1,10 +1,17 @@
 <div>
     <h1>Page <?=$id ?></h1>
+    <p><?=$msg=''; ?></p>
+    <?php foreach($text as $key => $val): ?>
+    <p><?=$val ?></p>
 
-    <ul>
-        <?php foreach ($text as $val): ?>
-            <li><?=$val ?></li>
-        <?php endforeach ?>
-    </ul>
+    <?php endforeach;
+    if($id == 1): ?>
+
+    <p><?=$log ?></p>
+    <?php endif ?>
+
+
+
+
 
 </div>

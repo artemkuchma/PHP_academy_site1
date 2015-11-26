@@ -6,6 +6,8 @@ class Connect {
 
     private static $connection;
     private $PDO;
+    private function __clone(){}
+    private function __wakeap(){}
     private   function __construct($dsn, $user, $pass){
         //try{
         $this->PDO = new PDO($dsn, $user, $pass);
@@ -22,7 +24,7 @@ class Connect {
         }
         return self::$connection;
     }
-    public function getDate($sql, array $placeholders)
+    public function getDate($sql, array $placeholders=array())
     {
         //$this->PDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $sth = $this->PDO->prepare($sql);

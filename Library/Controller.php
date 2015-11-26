@@ -13,5 +13,11 @@ abstract class Controller {
         require $file;
         return ob_get_clean();
     }
+    public function redirect($url)
+    {
+         header("Location: $url");
+        die;
+
+    }
 
 }
